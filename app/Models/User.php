@@ -18,13 +18,16 @@ class User extends Authenticatable
      */
     protected $primaryKey = 'email';
     protected $fillable = [
-        'email',
         'name',
         'surname',
+        'email',
         'password',
+        'remember_token',
         'type',
         'last_login',
-        'last_logout'
+        'last_logout',
+        'created_at',
+        'updated_at'
     ];
 
     /**
