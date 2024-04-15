@@ -7,9 +7,9 @@
     "require": {
         "php": "^8.2",
         "dompdf/dompdf": "^2.0",
+        "irazasyed/telegram-bot-sdk": "^3.14",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "longman/telegram-bot": "^0.82.0",
         "phpmailer/phpmailer": "^6.9",
         "thiagoprz/eloquent-composite-key": "^1.0"
     },
