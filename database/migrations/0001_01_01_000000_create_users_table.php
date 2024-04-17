@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            //$table->id(); 
+            $table->id(); 
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();
@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string("type");
             $table->timestamp("last_login")->default('1970-01-01 00:00:01');
             $table->timestamp("last_logout")->default('2038-01-19 03:14:07');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
 
         /*Schema::create('password_reset_tokens', function (Blueprint $table) {
