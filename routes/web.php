@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ApartamentController;
 use App\Providers\PDFService;
 use Illuminate\Support\Facades\Route;
 
@@ -44,9 +45,13 @@ Route::get('/generate-pdf/{id}', [UsersController::class, 'pdf'])->name("generat
 
 Route::post('/AfegirTreballadors', [UsersController::class, 'store'])->middleware(['auth', 'verified'])->name('AfegirTreballadors');
 
+Route::post('/AfegirApartaments', [ApartamentController::class, 'store'])->middleware(['auth', 'verified'])->name('AfegirApartaments');
+
 //PUT
 
 Route::put('/EditarTreballadors/{id}', [UsersController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarTreballadors');
+
+Route::put('/EditarApartaments/{id}', [ApartamentController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarApartaments');
 
 //DELETE
 
