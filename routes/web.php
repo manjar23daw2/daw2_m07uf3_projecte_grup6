@@ -29,6 +29,8 @@ Route::get('/gestioEmpresa', UsersController::class . '@index', function () {
     return view('treballadors.indexTreballadors');
 })->middleware(['auth', 'verified'])->name('gestioEmpresa');
 
+// ---------------------------- TREBALLADORS
+
 Route::get('/AfegirTreballadorsForm', function () {
     return view('treballadors.AddTreballadors');
 })->middleware(['auth', 'verified'])->name('AfegirTreballadorsForm');
@@ -40,6 +42,50 @@ Route::get('/VeureTreballador/{id}', [UsersController::class, 'show'], function 
 Route::get('/EditarTreballadorsForm/{id}', [UsersController::class, 'edit'], function () {
     return view('treballadors.EditTreballadors');
 })->middleware(['auth', 'verified'])->name('EditarTreballadorsForm');
+
+// ----------------------------- CLIENTS
+
+Route::get('/AfegirClientsForm', function () {
+    return view('clients.AddClient');
+})->middleware(['auth', 'verified'])->name('AfegirTreballadorsForm');
+
+Route::get('/VeureClients/{id}', [ClientsController::class, 'show'], function () {
+    return view('clients.ReadClient');
+})->middleware(['auth', 'verified'])->name('VeureClients');
+
+Route::get('/EditarClientsForm/{id}', [ClientsController::class, 'edit'], function () {
+    return view('client.EditClient');
+})->middleware(['auth', 'verified'])->name('EditarClientsForm');
+
+// ---------------------------------- LLOGUERS
+
+Route::get('/AfegirLlogaForm', function () {
+    return view('Lloga.AddLloga');
+})->middleware(['auth', 'verified'])->name('AfegirLlogaForm');
+
+Route::get('/VeureLloga/{id}', [LlogaController::class, 'show'], function () {
+    return view('Lloga.ReadLloga');
+})->middleware(['auth', 'verified'])->name('VeureLloga');
+
+Route::get('/EditarLlogaForm/{id}', [LlogaController::class, 'edit'], function () {
+    return view('Lloga.EditLloga');
+})->middleware(['auth', 'verified'])->name('EditarLlogaForm');
+
+// ----------------------------------- APARTAMENTS
+
+Route::get('/AfegirApartamentsForm', function () {
+    return view('apartaments.AddApartaments');
+})->middleware(['auth', 'verified'])->name('AfegirApartamentsForm');
+
+Route::get('/VeureApartaments/{id}', [ApartamentController::class, 'show'], function () {
+    return view('apartaments.ReadApartament');
+})->middleware(['auth', 'verified'])->name('VeureApartaments');
+
+Route::get('/EditarApartamentsForm/{id}', [ApartamentController::class, 'edit'], function () {
+    return view('apartaments.EditApartaments');
+})->middleware(['auth', 'verified'])->name('EditarApartamentsForm');
+
+// -------------------------------------------------
 
 Route::get('/generate-pdf/{id}', [UsersController::class, 'pdf'])->name("generatePDF");
 
