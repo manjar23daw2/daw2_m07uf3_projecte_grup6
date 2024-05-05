@@ -51,6 +51,8 @@ Route::post('/AfegirApartaments', [ApartamentController::class, 'store'])->middl
 
 Route::post('/AfegirClients', [ClientsController::class, 'store'])->middleware(['auth', 'verified'])->name('AfegirClients');
 
+Route::post('/AfegirLloguers', [LlogaController::class, 'store'])->middleware(['auth', 'verified'])->name('AfegirLloguers');
+
 
 //PUT
 
@@ -58,9 +60,19 @@ Route::put('/EditarTreballadors/{id}', [UsersController::class, 'update'])->midd
 
 Route::put('/EditarApartaments/{id}', [ApartamentController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarApartaments');
 
+Route::post('/EditarClients', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
+
+Route::post('/EditarLloguers', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
+
 //DELETE
 
 Route::delete('/EliminarTreballadors/{id}', [UsersController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarTreballadors');
+
+Route::delete('/EliminarLloguers/{id}', [LlogaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarLloguers');
+
+Route::delete('/EliminarApartaments/{id}', [ApartamentController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarApartaments');
+
+Route::delete('/EliminarClients/{id}', [ClientsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarClients');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
