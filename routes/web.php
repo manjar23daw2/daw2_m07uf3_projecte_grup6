@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ApartamentController;
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\LlogaController;
 use App\Providers\PDFService;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +48,9 @@ Route::get('/generate-pdf/{id}', [UsersController::class, 'pdf'])->name("generat
 Route::post('/AfegirTreballadors', [UsersController::class, 'store'])->middleware(['auth', 'verified'])->name('AfegirTreballadors');
 
 Route::post('/AfegirApartaments', [ApartamentController::class, 'store'])->middleware(['auth', 'verified'])->name('AfegirApartaments');
+
+Route::post('/AfegirClients', [ClientsController::class, 'store'])->middleware(['auth', 'verified'])->name('AfegirClients');
+
 
 //PUT
 
