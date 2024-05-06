@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="flex justify-center" style="padding: 10px;">
-                        <a href="{{ route('generatePDF', ['codi' => $apt->codi_unic]) }}">Generar PDF</a>
+                        <a href="{{ route('generatePDFA', ['id' => $apt->codi_unic]) }}">Generar PDF</a>
                     </div>
                 </div>
             </div>

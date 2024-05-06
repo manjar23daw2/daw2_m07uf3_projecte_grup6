@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </nav>
-                    <div>
+                    {{--<div>
                         @foreach ($clients as $client)
                         <div>
                             <div class="flex flex-row justify-between">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>
+                    </div>--}}
                     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
                         <div class="container-fluid">
                             <div style="padding-bottom:15px;">
@@ -84,17 +84,17 @@
                                     <p>{{ $a->barri }}</p>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
-                                    <form action="{{ route('EliminarApartaments', ['codi' => $a->codi_unic]) }}" method="POST">
+                                    <form action="{{ route('EliminarApartaments', ['id' => $a->codi_unic]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Apartament</button>
                                     </form>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarApartamentsForm', ['codi' => $a->codi_unic]) }}">Modificar Apartament</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarApartamentsForm', ['id' => $a->codi_unic]) }}">Modificar Apartament</a>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureApartaments', ['codi' => $a->codi_unic]) }}">Veure Apartament</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureApartaments', ['id' => $a->codi_unic]) }}">Veure Apartament</a>
                                 </div>
                             </div>
                         </div>

@@ -93,7 +93,7 @@ Route::get('/EditarApartamentsForm/{id}', [ApartamentController::class, 'edit'],
 // -------------------------------------------------
 
 Route::get('/generate-pdf/{id}', [UsersController::class, 'pdf'])->name("generatePDF");
-Route::get('/generate-pdf/{codi}', [Apartament::class, 'pdf'])->name("generatePDF");
+Route::get('/generate-pdf/{id}', [ApartamentController::class, 'pdfA'])->name("generatePDFA");
 
 //POST
 

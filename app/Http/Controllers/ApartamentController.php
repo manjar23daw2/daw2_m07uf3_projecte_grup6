@@ -30,16 +30,19 @@ class ApartamentController extends Controller
      */
     public function store(Request $request)
     {
+        $request['ascensor'] = "on" ? true : false;
+        $request['aire_condicionat'] = "on" ? true : false;
+
         $request->validate([
             'codi_unic' => 'required|max:7',
             'referencia_catastral' => 'required|max:20',
             'ciutat' => 'required|max:255',
             'barri' => 'required|max:255',
             'nom_carrer' => 'required|max:255',
-            'numero_carrer' => 'required|max:255',
+            'numero_carrer' => 'required|integer',
             'pis' => 'required|max:255',
-            'llits' => 'required|max:255',
-            'habitacions' => 'required|max:255',
+            'llits' => 'required|integer',
+            'habitacions' => 'required|integer',
             'ascensor' => 'required|boolean',
             'calefacció' => 'required|max:255',
             'aire_condicionat' => 'required|boolean'
@@ -63,9 +66,9 @@ class ApartamentController extends Controller
         return view('producte.apartaments.ReadApartaments', compact('apt'));
     }
 
-    public function pdf(string $codi)
+    public function pdfA(string $id)
     {
-        $apt = Apartament::find($codi);
+        $apt = Apartament::find($id);
         $pdf = FacadePdf::LoadView('producte.apartaments.PDFApartaments', compact('apt'));
         return $pdf->stream();
     }
@@ -85,6 +88,9 @@ class ApartamentController extends Controller
      */
     public function update(Request $request, string $codi)
     {
+        $request['ascensor'] = "on" ? true : false;
+        $request['aire_condicionat'] = "on" ? true : false;
+        
         $request->validate([
             'codi_unic' => 'required|max:7',
             'referencia_catastral' => 'required|max:20',
