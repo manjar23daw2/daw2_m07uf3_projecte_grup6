@@ -22,7 +22,7 @@
                             </div>
                         </div>
                     </nav>
-                    <form action="{{ route('AfegirApartaments') }}" method="post">
+                    <form action="{{ url('/AfegirApartaments') }}" method="post">
                         <div>
                             @csrf
                             <div>

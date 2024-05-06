@@ -68,11 +68,11 @@ Route::get('/AfegirLlogaForm', function () {
     return view('producte.Lloga.AddLloga');
 })->middleware(['auth', 'verified'])->name('AfegirLlogaForm');
 
-Route::get('/VeureLloga/{id}', [LlogaController::class, 'show'], function () {
+Route::get('/VeureLloga/{dni}/{codi_unic}', [LlogaController::class, 'show'], function () {
     return view('producte.Lloga.ReadLloga');
 })->middleware(['auth', 'verified'])->name('VeureLloga');
 
-Route::get('/EditarLlogaForm/{id}', [LlogaController::class, 'edit'], function () {
+Route::get('/EditarLlogaForm/{dni}/{codi_unic}', [LlogaController::class, 'edit'], function () {
     return view('producte.Lloga.EditLloga');
 })->middleware(['auth', 'verified'])->name('EditarLlogaForm');
 
@@ -114,13 +114,13 @@ Route::put('/EditarApartaments/{id}', [ApartamentController::class, 'update'])->
 
 Route::post('/EditarClients/{id}', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
 
-Route::put('/EditarLloguers', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
+Route::post('/EditarLloguers/{dni}/{codi_unic}', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
 
 //DELETE
 
 Route::delete('/EliminarTreballadors/{id}', [UsersController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarTreballadors');
 
-Route::delete('/EliminarLloguers/{id}', [LlogaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarLloguers');
+Route::delete('/EliminarLloguers/{dni}/{codi_unic}', [LlogaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarLloguers');
 
 Route::delete('/EliminarApartaments/{id}', [ApartamentController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarApartaments');
 

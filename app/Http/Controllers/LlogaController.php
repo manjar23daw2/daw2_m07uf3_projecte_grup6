@@ -30,20 +30,10 @@ class LlogaController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'dni' => 'required|string|max:9',
-            'codi_unic' => 'required|string|max:7',
-            'data_inici_lloguer' => 'required|date',
-            'hora_inici_lloguer' => 'required|date_format:H:i:s',
-            'data_final_lloguer' => 'required|date',
-            'hora_final_lloguer' => 'required|date_format:H:i:s',
-            'lloc_lliurament_claus' => 'required|string|max:255',
-            'lloc_devolució_claus' => 'required|string|max:255',
-            'preu_dia' => 'required|numeric',
-            'diposit' => 'required|boolean',
-            'quantitat_diposit' => 'required|numeric',
-            'tipus_assegurança' => 'required|string|max:255',
-        ]);
+        $request['hora_inici_lloguer'] = '2000-01-01 ' . $request['hora_inici_lloguer'] . ':00';
+        $request['hora_final_lloguer'] = '2000-01-01 ' . $request['hora_final_lloguer'] . ':00';
+
+        // $request->validate([ 'dni' => 'required|string|max:9', 'codi_unic' => 'required|string|max:7', 'data_inici_lloguer' => 'required|date', 'hora_inici_lloguer' => 'required|date_format:H:i:s', 'data_final_lloguer' => 'required|date', 'hora_final_lloguer' => 'required|date_format:H:i:s', 'lloc_lliurament_claus' => 'required|string|max:255', 'lloc_devolució_claus' => 'required|string|max:255', 'preu_dia' => 'required|numeric', 'diposit' => 'required|boolean', 'quantitat_diposit' => 'required|numeric', 'tipus_assegurança' => 'required|string|max:255', ]);
 
         $data = $request->all();
 
@@ -58,10 +48,10 @@ class LlogaController extends Controller
     public function show(string $dni, string $codi_unic)
     {
         //
-        $lloga = Lloga::where('dni', $dni)
-                ->where('codi_unic', $codi_unic)
+        $lloga = Lloga::where('dni', '=', $dni)
+                ->where('codi_unic', '=', $codi_unic)
                 ->first();
-        return view('producte.apartaments.ReadApartaments', compact('lloga'));
+        return view('producte.Lloga.ReadLloga', compact('lloga'));
     }
 
     /**
@@ -70,10 +60,10 @@ class LlogaController extends Controller
     public function edit(string $dni, string $codi_unic)
     {
 
-        $lloga = Lloga::where('dni', $dni)
-                ->where('codi_unic', $codi_unic)
+        $lloga = Lloga::where('dni', '=', $dni)
+                ->where('codi_unic', '=', $codi_unic)
                 ->first();
-        return view('producte.Lloga.ReadLloga', compact('lloga'));
+        return view('producte.Lloga.EditLloga', compact('lloga'));
     }
 
     /**
@@ -82,25 +72,13 @@ class LlogaController extends Controller
     public function update(Request $request, string $dni, string $codi_unic)
     {
         //
-        $request->validate([
-            'dni' => 'required|string|max:9',
-            'codi_unic' => 'required|string|max:7',
-            'data_inici_lloguer' => 'required|date',
-            'hora_inici_lloguer' => 'required|date_format:H:i:s',
-            'data_final_lloguer' => 'required|date',
-            'hora_final_lloguer' => 'required|date_format:H:i:s',
-            'lloc_lliurament_claus' => 'required|string|max:255',
-            'lloc_devolució_claus' => 'required|string|max:255',
-            'preu_dia' => 'required|numeric',
-            'diposit' => 'required|boolean',
-            'quantitat_diposit' => 'required|numeric',
-            'tipus_assegurança' => 'required|string|max:255',
-        ]);
+        $request['hora_inici_lloguer'] = '2000-01-01 ' . $request['hora_inici_lloguer'] . ':00';
+        $request['hora_final_lloguer'] = '2000-01-01 ' . $request['hora_final_lloguer'] . ':00';
+        // $request->validate([ 'dni' => 'required|string|max:9', 'codi_unic' => 'required|string|max:7', 'data_inici_lloguer' => 'required|date', 'hora_inici_lloguer' => 'required|date_format:H:i:s', 'data_final_lloguer' => 'required|date', 'hora_final_lloguer' => 'required|date_format:H:i:s', 'lloc_lliurament_claus' => 'required|string|max:255', 'lloc_devolució_claus' => 'required|string|max:255', 'preu_dia' => 'required|numeric', 'diposit' => 'required|boolean', 'quantitat_diposit' => 'required|numeric', 'tipus_assegurança' => 'required|string|max:255', ]);
 
-        $data = $request->all();
-        $lloga = Lloga::where('dni', $dni)
-                ->where('codi_unic', $codi_unic)
-                ->first();
+        $data = $request->except('_token', '_method');
+        $lloga = Lloga::where('dni', '=', $dni)
+                ->where('codi_unic', '=', $codi_unic);
         $lloga->update($data);
         return redirect()->route('gestioProducte')
             ->with('success', 'Data created successfully.');
@@ -112,9 +90,8 @@ class LlogaController extends Controller
     public function destroy(string $dni, string $codi_unic)
     {
         //
-        $lloga = Lloga::where('dni', $dni)
-                ->where('codi_unic', $codi_unic)
-                ->first();
+        $lloga = Lloga::where('dni', '=', $dni)
+                ->where('codi_unic', '=', $codi_unic);
         $lloga->delete();
         return redirect()->route('gestioProducte')
             ->with('success', 'User deleted successfully');

@@ -18,18 +18,18 @@
                             </div>
                         </div>
                     </nav>
-                    <form action="{{ route('EditarLloguers', $user->id) }}" method="post">
+                    <form action="{{ route('EditarLloguers', ['dni' => $lloga->dni, 'codi_unic' => $lloga->codi_unic]) }}" method="post">
                         <div>
                             @csrf
-                            @method('PUT')
+                            @method('POST')
                             <div>
                                 <label for="dni">Dni: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="/^\d{8}[a-zA-Z]$" required>
+                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="/^\d{8}[a-zA-Z]$" value="{{$lloga->dni}}" required disabled>
                             </div>
                             <br>
                             <div>
                                 <label for="codi_unic">Codi Unic: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="codi_unic" id="codi_unic" pattern="\d{4}[A-Za-z]{3}" required>
+                                <input style="border-radius:30px;color:black" type="text" name="codi_unic" id="codi_unic" pattern="\d{4}[A-Za-z]{3}" value="{{$lloga->codi_unic}}" required disabled disabled>
                             </div>
                             <br>
                             <div>

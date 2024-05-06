@@ -24,47 +24,47 @@
                             @method('PUT')
                             <div>
                                 <label for="codi_unic">Codi Unic: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="codi_unic" id="codi_unic" pattern="\d{4}[A-Za-z]{3}" required>
+                                <input style="border-radius:30px;color:black" type="text" value="{{ $apt->codi_unic }}" name="codi_unic" id="codi_unic" pattern="\d{4}[A-Za-z]{3}" required>
                             </div>
                             <br>
                             <div>
                                 <label for="referencia_catastral">Referencia Catastral: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="referencia_catastral" id="referencia_catastral" required>
+                                <input style="border-radius:30px;color:black" type="text" value="{{ $apt->referencia_catastral }}" name="referencia_catastral" id="referencia_catastral" required>
                             </div>
                             <br>
                             <div>
                                 <label for="ciutat">Ciutat: </label>
-                                <input style="border-radius:30px;color:black" name="ciutat" id="ciutat" required>
+                                <input style="border-radius:30px;color:black" value="{{ $apt->ciutat }}" name="ciutat" id="ciutat" required>
                             </div>
                             <br>
                             <div>
                                 <label for="barri">Barri: </label>
-                                <input style="border-radius:30px;color:black" name="barri" id="barri" required>
+                                <input style="border-radius:30px;color:black" value="{{ $apt->barri }}" name="barri" id="barri" required>
                             </div>
                             <br>
                             <div>
                                 <label for="nom_carrer">Nom Carrer: </label>
-                                <input style="border-radius:30px;color:black" name="nom_carrer" id="nom_carrer" required>
+                                <input style="border-radius:30px;color:black" value="{{ $apt->nom_carrer }}"  name="nom_carrer" id="nom_carrer" required>
                             </div>
                             <br>
                             <div>
                                 <label for="numero_carrer">Numero Carrer: </label>
-                                <input style="border-radius:30px;color:black" type="number" name="numero_carrer" id="numero_carrer" required>
+                                <input style="border-radius:30px;color:black" value="{{ $apt->numero_carrer}}" type="number" name="numero_carrer" id="numero_carrer" required>
                             </div>
                             <br>
                             <div>
                                 <label for="pis">Pis:  </label>
-                                <input style="border-radius:30px;color:black" name="pis" id="pis" required>
+                                <input style="border-radius:30px;color:black" value="{{$apt->pis}}" name="pis" id="pis" required>
                             </div>
                             <br>
                             <div>
                                 <label for="llits">Llits:  </label>
-                                <input style="border-radius:30px;color:black" type="number" name="llits" id="llits" required>
+                                <input style="border-radius:30px;color:black" value="{{ $apt->llits}}" type="number" name="llits" id="llits" required>
                             </div>
                             <br>
                             <div>
                                 <label for="habitacions">Habitacions:  </label>
-                                <input style="border-radius:30px;color:black" type="number" name="habitacions" id="habitacions" required>
+                                <input style="border-radius:30px;color:black" value="{{ $apt->habitacions}}" type="number" name="habitacions" id="habitacions" required>
                             </div>
                             <br>
                             <div>

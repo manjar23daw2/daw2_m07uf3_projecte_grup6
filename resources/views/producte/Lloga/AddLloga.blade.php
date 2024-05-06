@@ -27,7 +27,7 @@
                             @csrf
                             <div>
                                 <label for="dni">Dni: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="/^\d{8}[a-zA-Z]$" required>
+                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="\d{8}[A-Z]" required>
                             </div>
                             <br>
                             <div>

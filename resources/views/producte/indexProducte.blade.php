@@ -1,4 +1,4 @@
-@if (Auth::check() && (Auth::user()->type == 'treballador')) 
+@if (Auth::check() && (Auth::user()->type == 'treballador'))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -84,17 +84,59 @@
                                     <p>{{ $a->barri }}</p>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
-                                    <form action="{{ route('EliminarApartaments', ['codi' => $a->codi_unic]) }}" method="POST">
+                                    <form action="{{ route('EliminarApartaments', ['id' => $a->codi_unic]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Apartament</button>
                                     </form>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarApartamentsForm', ['codi' => $a->codi_unic]) }}">Modificar Apartament</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarApartamentsForm', ['id' => $a->codi_unic]) }}">Modificar Apartament</a>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureApartaments', ['codi' => $a->codi_unic]) }}">Veure Apartament</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureApartaments', ['id' => $a->codi_unic]) }}">Veure Apartament</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+                        <div class="container-fluid">
+                            <div style="padding-bottom:15px;">
+                                <div class="col" style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#00FE19;">
+                                    <a class="btn btn-sm btn-success" style="padding-top: 5px;color:#000000" href="{{ route('AfegirLlogaForm') }}">Afegir Lloguers</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div>
+                        @foreach ($lloguers as $l)
+                        <div>
+                            <div class="flex flex-row justify-between">
+                                <div style="padding-top: 5px;">
+                                    <h5>{{ $l->codi_unic }}</h5>
+                                </div>
+                                <div style="padding-top: 5px;">
+                                    <h5>{{ $l->referencia_catastral }}</h5>
+                                </div>
+                                <div style="padding-top: 5px;">
+                                    <h5>{{ $l->ciutat }}</h5>
+                                </div>
+                                <div style="padding-top: 5px;">
+                                    <p>{{ $l->barri }}</p>
+                                </div>
+                                <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
+                                    <form action="{{ route('EliminarLloguers', ['dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Lloguer</button>
+                                    </form>
+                                </div>
+                                <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarLlogaForm', ['dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}">Modificar Lloguer</a>
+                                </div>
+                                <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureLloga', ['dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}">Veure Lloguer</a>
                                 </div>
                             </div>
                         </div>
