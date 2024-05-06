@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clients;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class ClientsController extends Controller
 {
@@ -118,5 +120,12 @@ class ClientsController extends Controller
         $client->delete();
         return redirect()->route('gestioProducte')
             ->with('success', 'Client deleted successfully');
+    }
+
+    public function pdfC(string $dni)
+    {
+        $client = Clients::find($dni);
+        $pdf = FacadePDF::LoadView('producte.clients.PDFCleint', compact('client'));
+        return $pdf->stream();
     }
 }

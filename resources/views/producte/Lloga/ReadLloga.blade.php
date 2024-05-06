@@ -1,3 +1,4 @@
+@if (Auth::check() && (Auth::user()->type == 'treballador'))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -14,7 +15,7 @@
                         <div class="container-fluid">
                             <div style="padding-bottom:15px;display:flex;justify-content:center; font-size:25px">
                                 <div>
-                                    <a class="navbar-brand h1" href="{{ route('gestioEmpresa') }}">Pagina principal gestioEmpresa</a>
+                                    <a class="navbar-brand h1" href="{{ route('gestioProducte') }}">Pagina principal gestioProducte</a>
                                 </div>
                             </div>
                         </div>
@@ -29,16 +30,16 @@
                                     <h5>Codi: {{ $lloga->codi_unic }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->data_inici_lloga }}</h5>
+                                    <h5>{{ $lloga->data_inici_lloguer }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->hora_inici_lloga }}</h5>
+                                    <h5>{{ $lloga->hora_inici_lloguer }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->data_final_lloga }}</h5>
+                                    <h5>{{ $lloga->data_final_lloguer }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->hora_final_lloga }}</h5>
+                                    <h5>{{ $lloga->hora_final_lloguer }}</h5>
                                 </div>
                                 <div>
                                     <h5>Lloc de lliurament de les claus: {{ $lloga->lloc_lliurament_claus }}</h5>
@@ -64,9 +65,11 @@
                         </div>
                     </div>
                     <div class="flex justify-center" style="padding: 10px;">
-                        </div>
+                        <a href="{{ route('generatePDFLL', ['codi' => $lloga->codi_unic, 'dni' => $lloga->dni]) }}">Generar PDF</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+@endif

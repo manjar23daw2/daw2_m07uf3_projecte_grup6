@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lloga;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class LlogaController extends Controller
 {
@@ -49,8 +50,8 @@ class LlogaController extends Controller
     {
         //
         $lloga = Lloga::where('dni', '=', $dni)
-                ->where('codi_unic', '=', $codi_unic)
-                ->first();
+            ->where('codi_unic', '=', $codi_unic)
+            ->first();
         return view('producte.Lloga.ReadLloga', compact('lloga'));
     }
 
@@ -61,9 +62,18 @@ class LlogaController extends Controller
     {
 
         $lloga = Lloga::where('dni', '=', $dni)
-                ->where('codi_unic', '=', $codi_unic)
-                ->first();
+            ->where('codi_unic', '=', $codi_unic)
+            ->first();
         return view('producte.Lloga.EditLloga', compact('lloga'));
+    }
+
+    public function pdfLL(string $codi, string $dni)
+    {
+        $lloga = Lloga::where('dni', '=', $dni)
+            ->where('codi_unic', '=', $codi)
+            ->first();
+        $pdf = FacadePdf::LoadView('producte.Lloga.LLogaPDF', compact('lloga'));
+        return $pdf->stream();
     }
 
     /**
@@ -78,7 +88,7 @@ class LlogaController extends Controller
 
         $data = $request->except('_token', '_method');
         $lloga = Lloga::where('dni', '=', $dni)
-                ->where('codi_unic', '=', $codi_unic);
+            ->where('codi_unic', '=', $codi_unic);
         $lloga->update($data);
         return redirect()->route('gestioProducte')
             ->with('success', 'Data created successfully.');
@@ -91,11 +101,9 @@ class LlogaController extends Controller
     {
         //
         $lloga = Lloga::where('dni', '=', $dni)
-                ->where('codi_unic', '=', $codi_unic);
+            ->where('codi_unic', '=', $codi_unic);
         $lloga->delete();
         return redirect()->route('gestioProducte')
             ->with('success', 'User deleted successfully');
-
-        
     }
 }

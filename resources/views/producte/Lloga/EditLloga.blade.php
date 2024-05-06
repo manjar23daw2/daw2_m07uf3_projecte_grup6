@@ -1,3 +1,4 @@
+@if (Auth::check() && (Auth::user()->type == 'treballador'))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -21,7 +22,7 @@
                     <form action="{{ route('EditarLloguers', ['dni' => $lloga->dni, 'codi_unic' => $lloga->codi_unic]) }}" method="post">
                         <div>
                             @csrf
-                            @method('POST')
+                            @method('PUT')
                             <div>
                                 <label for="dni">Dni: </label>
                                 <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="/^\d{8}[a-zA-Z]$" value="{{$lloga->dni}}" required disabled>
@@ -95,3 +96,4 @@
         </div>
     </div>
 </x-app-layout>
+@endif

@@ -1,3 +1,4 @@
+@if (Auth::check() && (Auth::user()->type == 'treballador'))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -13,7 +14,7 @@
                         <div class="container-fluid">
                             <div style="padding-bottom:15px;display:flex;justify-content:center; font-size:25px">
                                 <div>
-                                    <a class="navbar-brand h1" href="{{ route('gestioProducte') }}">Pagina principal gestioEmpresa</a>
+                                    <a class="navbar-brand h1" href="{{ route('gestioProducte') }}">Pagina principal gestioProducte</a>
                                 </div>
                             </div>
                         </div>
@@ -21,45 +22,45 @@
                     <form action="{{ route('EditarClients', $client->dni) }}" method="post">
                         <div>
                             @csrf
-                            @method('POST')
+                            @method('PUT')
                             <div>
                                 <label for="dni">Dni: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="\d{8}[A-Z]" value="{{$client->dni}}" required disabled>
+                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="\d{8}[A-Z]" value="{{$client->dni}}" required>
                             </div>
                             <br>
                             <div>
                                 <label for="nom">Nom: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="nom" id="nom" required>
+                                <input style="border-radius:30px;color:black" type="text" name="nom" id="nom" value="{{$client->nom}}"required>
                             </div>
                             <br>
                             <div>
                                 <label for="cognom">Cognom: </label>
-                                <input style="border-radius:30px;color:black" name="cognom" id="cognom" required>
+                                <input style="border-radius:30px;color:black" name="cognom" id="cognom" value="{{$client->cognom}}" required>
                             </div>
                             <br>
                             <div>
                                 <label for="edat">Edat: </label>
-                                <input style="border-radius:30px;color:black" type="number" name="edat" id="edat" required>
+                                <input style="border-radius:30px;color:black" type="number" name="edat" value="{{$client->edat}}" id="edat" required>
                             </div>
                             <br>
                             <div>
                                 <label for="adreça">Adreça: </label>
-                                <input style="border-radius:30px;color:black" name="adreça" id="adreça" required>
+                                <input style="border-radius:30px;color:black" name="adreça" id="adreça" value="{{$client->adreça}}" required>
                             </div>
                             <br>
                             <div>
                                 <label for="ciutat">Ciutat: </label>
-                                <input style="border-radius:30px;color:black" name="ciutat" id="ciutat" required>
+                                <input style="border-radius:30px;color:black" name="ciutat" id="ciutat" value="{{$client->ciutat}}" required>
                             </div>
                             <br>
                             <div>
                                 <label for="pais">Pais: </label>
-                                <input style="border-radius:30px;color:black" name="pais" id="pais" required>
+                                <input style="border-radius:30px;color:black" name="pais" id="pais" value="{{$client->pais}}" required>
                             </div>
                             <br>
                             <div>
                                 <label for="email">Email: </label>
-                                <input style="border-radius:30px;color:black" name="email" id="email" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                                <input style="border-radius:30px;color:black" name="email" id="email" value="{{$client->email}}" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
                             </div>
                             <br>
                             <div>
@@ -72,7 +73,7 @@
                             <br>
                             <div>
                                 <label for="numero_targeta">Numero targeta: </label>
-                                <input style="border-radius:30px;color:black" type="number" name="numero_targeta" id="numero_targeta" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/" required>
+                                <input style="border-radius:30px;color:black" type="number" name="numero_targeta" id="numero_targeta" value="{{$client->numero_targeta}}" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/" required>
                             </div>
                             <div class="flex justify-center">
                                 <input type="submit" value="submit">
@@ -84,3 +85,4 @@
         </div>
     </div>
 </x-app-layout>
+@endif

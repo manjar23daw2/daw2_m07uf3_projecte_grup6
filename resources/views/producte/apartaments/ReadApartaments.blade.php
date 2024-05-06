@@ -1,3 +1,4 @@
+@if (Auth::check() && (Auth::user()->type == 'treballador'))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -62,10 +63,11 @@
                         </div>
                     </div>
                     <div class="flex justify-center" style="padding: 10px;">
-                        <a href="{{ route('generatePDFA', ['id' => $apt->codi_unic]) }}">Generar PDF</a>
+                        <a href="{{ route('generatePDFA', ['codi' => $apt->codi_unic]) }}">Generar PDF</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+@endif

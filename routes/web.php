@@ -93,7 +93,9 @@ Route::get('/EditarApartamentsForm/{id}', [ApartamentController::class, 'edit'],
 // -------------------------------------------------
 
 Route::get('/generate-pdf/{id}', [UsersController::class, 'pdf'])->name("generatePDF");
-Route::get('/generate-pdf/{codi}', [Apartament::class, 'pdf'])->name("generatePDF");
+Route::get('/generate-pdf/apartament/{codi}', [ApartamentController::class, 'pdfA'])->name("generatePDFA");
+Route::get('/generate-pdf/client/{dni}', [ClientsController::class, 'pdfC'])->name("generatePDFC");
+Route::get('/generate-pdf/lloguer/{codi}/{dni}', [LlogaController::class, 'pdfLL'])->name("generatePDFLL");
 
 //POST
 
@@ -112,9 +114,9 @@ Route::put('/EditarTreballadors/{id}', [UsersController::class, 'update'])->midd
 
 Route::put('/EditarApartaments/{id}', [ApartamentController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarApartaments');
 
-Route::post('/EditarClients/{id}', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
+Route::put('/EditarClients/{id}', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
 
-Route::post('/EditarLloguers/{dni}/{codi_unic}', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
+Route::put('/EditarLloguers/{dni}/{codi_unic}', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
 
 //DELETE
 
