@@ -11,6 +11,7 @@ class Apartament extends Model
     protected $primaryKey = 'codi_unic';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
     protected $fillable = [
         'codi_unic',
         'referencia_catastral',

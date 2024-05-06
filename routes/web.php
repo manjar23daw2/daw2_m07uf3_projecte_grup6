@@ -5,6 +5,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ApartamentController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\LlogaController;
+use App\Models\Apartament;
 use App\Providers\PDFService;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,11 @@ Route::get('/dashboard', function () {
 
 // Producte
 
-Route::get('/gestioProducte', ClientsController::class . '@index' ,function () {
+/*Route::get('/gestioProducte', ClientsController::class . '@index',function () {
+    return view('producte.indexProducte');
+})->middleware(['auth', 'verified'])->name('gestioProducte');*/
+
+Route::get('/gestioProducte', ApartamentController::class . '@index' ,function () {
     return view('producte.indexProducte');
 })->middleware(['auth', 'verified'])->name('gestioProducte');
 
@@ -88,6 +93,7 @@ Route::get('/EditarApartamentsForm/{id}', [ApartamentController::class, 'edit'],
 // -------------------------------------------------
 
 Route::get('/generate-pdf/{id}', [UsersController::class, 'pdf'])->name("generatePDF");
+Route::get('/generate-pdf/{codi}', [Apartament::class, 'pdf'])->name("generatePDF");
 
 //POST
 
@@ -106,9 +112,9 @@ Route::put('/EditarTreballadors/{id}', [UsersController::class, 'update'])->midd
 
 Route::put('/EditarApartaments/{id}', [ApartamentController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarApartaments');
 
-Route::post('/EditarClients', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
+Route::put('/EditarClients', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
 
-Route::post('/EditarLloguers', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
+Route::put('/EditarLloguers', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
 
 //DELETE
 

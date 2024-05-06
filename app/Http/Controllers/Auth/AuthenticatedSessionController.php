@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Telegram\Bot\Api;
+use App\Mail\Email;
+use Illuminate\Support\Facades\Mail;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -27,15 +29,20 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
 
-        $request->authenticate();
+        try {
+            $request->authenticate();
 
-        $request->session()->regenerate();
+            $request->session()->regenerate();
+        } catch (\Illuminate\Database\QueryException $qe) {
+            view("dbconnectionerror");
+        }
 
         $userType = $request->user()->type;
 
         if($userType === 'treballador'){
             $messageBot = new TelegramService(new Api("7154088022:AAGK3714vprTK0QzgBEq2eZVPJrMfPXIKZQ"));
             $messageBot->MessageConfirmation($request->user()->name, date("H:i:s:a"), true);
+            Mail::to('phpappad@gmail.com')->send(new Email($request->user()->name, true, date("H:i:s:a")));
             return redirect()->intended(route('gestioProducte', absolute: false)); 
         }else if($userType === 'cap de departament'){
             return redirect()->intended(route('gestioEmpresa', absolute: false));
@@ -54,6 +61,7 @@ class AuthenticatedSessionController extends Controller
         if($userType === 'treballador'){
             $messageBot = new TelegramService(new Api("7154088022:AAGK3714vprTK0QzgBEq2eZVPJrMfPXIKZQ"));
             $messageBot->MessageConfirmation($request->user()->name, date("H:i:s:a"), false);
+            Mail::to('phpappad@gmail.com')->send(new Email($request->user()->name, false, date("H:i:s:a")));
         }
         
         Auth::guard('web')->logout();
