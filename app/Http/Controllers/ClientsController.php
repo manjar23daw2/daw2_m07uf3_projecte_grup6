@@ -13,6 +13,9 @@ class ClientsController extends Controller
     public function index()
     {
         //
+        $clients = Clients::all();
+        //$users = User::all();
+        return view('producte.indexProducte', compact('clients'));
     }
 
     /**

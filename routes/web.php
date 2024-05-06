@@ -18,7 +18,7 @@ Route::get('/dashboard', function () {
 
 // Producte
 
-Route::get('/gestioProducte', function () {
+Route::get('/gestioProducte', ClientsController::class . '@index' ,function () {
     return view('producte.indexProducte');
 })->middleware(['auth', 'verified'])->name('gestioProducte');
 
