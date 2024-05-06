@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Models\Apartament;
 use App\Models\Clients;
@@ -35,22 +36,22 @@ class ApartamentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'codi_unic' => 'required|max:7',
-            'referencia_catastral' => 'required|max:20',
-            'ciutat' => 'required|max:255',
-            'barri' => 'required|max:255',
-            'nom_carrer' => 'required|max:255',
-            'numero_carrer' => 'required|max:255',
-            'pis' => 'required|max:255',
-            'llits' => 'required|max:255',
-            'habitacions' => 'required|max:255',
+            'codi_unic' => 'required|string|max:7',
+            'referencia_catastral' => 'required|string|max:20',
+            'ciutat' => 'required|string|max:255',
+            'barri' => 'required|string|max:255',
+            'nom_carrer' => 'required|string|max:255',
+            'numero_carrer' => 'required|integer',
+            'pis' => 'nullable|string|max:255',
+            'llits' => 'required|integer',
+            'habitacions' => 'required|integer',
             'ascensor' => 'required|boolean',
-            'calefacció' => 'required|max:255',
-            'aire_condicionat' => 'required|boolean'
+            'calefacció' => 'required|string|max:255',
+            'aire_condicionat' => 'required|boolean',
         ]);
 
         $data = $request->all();
-        
+
         Log::info('After redirect');
 
         Apartament::create($data);
@@ -80,7 +81,7 @@ class ApartamentController extends Controller
     public function edit(string $codi)
     {
         $apt = Apartament::findOrFail($codi); // Retrieve the user data by their ID
-        
+
         return view('producte.apartaments.EditApartaments', compact('apt'));
     }
 

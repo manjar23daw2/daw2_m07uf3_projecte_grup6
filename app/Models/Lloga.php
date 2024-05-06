@@ -10,6 +10,7 @@ class Lloga extends Model
     use HasFactory;
     protected $primaryKey = ['dni', 'codi_unic'];
     public $incrementing = false;
+    public $timestamps = false;
     protected $fillable = [
         'dni',
         'codi_unic',
