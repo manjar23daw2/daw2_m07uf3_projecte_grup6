@@ -13,12 +13,12 @@
                         <div class="container-fluid">
                             <div style="padding-bottom:15px;display:flex;justify-content:center; font-size:25px">
                                 <div>
-                                    <a class="navbar-brand h1" href="{{ route('gestioEmpresa') }}">Pagina principal gestioEmpresa</a>
+                                    <a class="navbar-brand h1" href="{{ route('gestioProducte') }}">Pagina principal gestioProducte</a>
                                 </div>
                             </div>
                         </div>
                     </nav>
-                    <form action="{{ route('EditarApartaments', $user->id) }}" method="post">
+                    <form action="{{ route('EditarApartaments', $apt->codi_unic) }}" method="post">
                         <div>
                             @csrf
                             @method('PUT')

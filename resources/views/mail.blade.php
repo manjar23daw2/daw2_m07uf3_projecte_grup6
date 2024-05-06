@@ -1,0 +1,1 @@
+{{$usuari}} ha fet {{$logginState}} a les {{$horaEntrada}}

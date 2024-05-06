@@ -14,7 +14,7 @@
                         <div class="container-fluid">
                             <div style="padding-bottom:15px;display:flex;justify-content:center; font-size:25px">
                                 <div>
-                                    <a class="navbar-brand h1" href="{{ route('gestioEmpresa') }}">Pagina principal gestioEmpresa</a>
+                                    <a class="navbar-brand h1" href="{{ route('gestioProducte') }}">Pagina principal gestioProducte</a>
                                 </div>
                             </div>
                         </div>
@@ -23,14 +23,46 @@
                         <div class="flex justify-center">
                             <div class="flex flex-col justify-between">
                                 <div>
-                                    <h5>ID: {{ $user->id }}</h5>
+                                    <h5>{{ $apt->codi_unic }}</h5>
                                 </div>
-                                <!-- AÑADIR VARIABLE DE TIPO APARTAMENTO Y DISPLAYEAR -->
+                                <div>
+                                    <h5>{{ $apt->referencia_catastral }}</h5>
+                                </div>
+                                <div>
+                                    <h5>{{ $apt->ciutat }}</h5>
+                                </div>
+                                <div>
+                                    <h5>{{ $apt->barri }}</h5>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->nom_carrer }}</p>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->numero_carrer}}</p>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->pis}}</p>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->llits}}</p>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->habitacions}}</p>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->ascensor}}</p>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->calefacció}}</p>
+                                </div>
+                                <div>
+                                    <p>{{ $apt->aire_condicionat}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="flex justify-center" style="padding: 10px;">
-                        <a href="{{ route('generatePDF', ['id' => $user->id]) }}">Generar PDF</a>
+                        <a href="{{ route('generatePDF', ['codi' => $apt->codi_unic]) }}">Generar PDF</a>
                     </div>
                 </div>
             </div>

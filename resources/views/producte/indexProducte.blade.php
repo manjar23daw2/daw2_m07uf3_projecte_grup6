@@ -15,7 +15,7 @@
                         <div class="container-fluid">
                             <div style="padding-bottom:15px;display:flex;justify-content:center; font-size:25px">
                                 <div>
-                                    <a class="navbar-brand h1" href="{{ route('gestioEmpresa') }}">Pagina principal gestioEmpresa</a>
+                                    <a class="navbar-brand h1" href="{{ route('gestioProducte') }}">Pagina principal gestioProducte</a>
                                 </div>
                             </div>
                             <div style="padding-bottom:15px;">
@@ -53,6 +53,48 @@
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
                                     <a style="padding-top: 5px;color:#000000" href="{{ route('VeureClients', ['id' => $client->dni]) }}">Veure Clients</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+                        <div class="container-fluid">
+                            <div style="padding-bottom:15px;">
+                                <div class="col" style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#00FE19;">
+                                    <a class="btn btn-sm btn-success" style="padding-top: 5px;color:#000000" href="{{ route('AfegirApartamentsForm') }}">Afegir Apartament</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div>
+                        @foreach ($apt as $a)
+                        <div>
+                            <div class="flex flex-row justify-between">
+                                <div style="padding-top: 5px;">
+                                    <h5>{{ $a->codi_unic }}</h5>
+                                </div>
+                                <div style="padding-top: 5px;">
+                                    <h5>{{ $a->referencia_catastral }}</h5>
+                                </div>
+                                <div style="padding-top: 5px;">
+                                    <h5>{{ $a->ciutat }}</h5>
+                                </div>
+                                <div style="padding-top: 5px;">
+                                    <p>{{ $a->barri }}</p>
+                                </div>
+                                <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
+                                    <form action="{{ route('EliminarApartaments', ['codi' => $a->codi_unic]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Apartament</button>
+                                    </form>
+                                </div>
+                                <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarApartamentsForm', ['codi' => $a->codi_unic]) }}">Modificar Apartament</a>
+                                </div>
+                                <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureApartaments', ['codi' => $a->codi_unic]) }}">Veure Apartament</a>
                                 </div>
                             </div>
                         </div>
