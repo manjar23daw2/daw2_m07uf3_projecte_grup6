@@ -11,6 +11,7 @@ class Clients extends Model
     protected $primaryKey = 'dni';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
     protected $fillable = [
         'dni',
         'nom',

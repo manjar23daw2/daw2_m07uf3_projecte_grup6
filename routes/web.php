@@ -106,7 +106,7 @@ Route::put('/EditarTreballadors/{id}', [UsersController::class, 'update'])->midd
 
 Route::put('/EditarApartaments/{id}', [ApartamentController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarApartaments');
 
-Route::post('/EditarClients', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
+Route::post('/EditarClients/{id}', [ClientsController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarClients');
 
 Route::post('/EditarLloguers', [LlogaController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarLloguers');
 

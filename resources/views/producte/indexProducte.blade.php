@@ -42,17 +42,17 @@
                                     <p>{{ $client->email }}</p>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
-                                    <form action="{{ route('EliminarTreballadors', ['id' => $client->id]) }}" method="POST">
+                                    <form action="{{ route('EliminarClients', ['id' => $client->dni]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Clients</button>
                                     </form>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarTreballadorsForm', ['id' => $client->dni]) }}">Modificar Clients</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarClientsForm', ['id' => $client->dni]) }}">Modificar Clients</a>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureTreballador', ['id' => $client->dni]) }}">Veure Clients</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureClients', ['id' => $client->dni]) }}">Veure Clients</a>
                                 </div>
                             </div>
                         </div>

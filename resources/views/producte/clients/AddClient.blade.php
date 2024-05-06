@@ -15,7 +15,7 @@
                                 <div>
                                     <div style="padding-bottom:15px;display:flex;justify-content:center; font-size:25px">
                                         <div>
-                                            <a class="navbar-brand h1" href="{{ route('gestioEmpresa') }}">Pagina principal gestioEmpresa</a>
+                                            <a class="navbar-brand h1" href="{{ route('gestioProducte') }}">Pagina principal gestioEmpresa</a>
                                         </div>
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@
                             @csrf
                             <div>
                                 <label for="dni">Dni: </label>
-                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="/^\d{8}[a-zA-Z]$" required>
+                                <input style="border-radius:30px;color:black" type="text" name="dni" id="dni" pattern="\d{8}[A-Z]" required>
                             </div>
                             <br>
                             <div>
