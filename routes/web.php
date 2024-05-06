@@ -46,43 +46,43 @@ Route::get('/EditarTreballadorsForm/{id}', [UsersController::class, 'edit'], fun
 // ----------------------------- CLIENTS
 
 Route::get('/AfegirClientsForm', function () {
-    return view('clients.AddClient');
-})->middleware(['auth', 'verified'])->name('AfegirTreballadorsForm');
+    return view('producte.clients.AddClient');
+})->middleware(['auth', 'verified'])->name('AfegirClientsForm');
 
 Route::get('/VeureClients/{id}', [ClientsController::class, 'show'], function () {
-    return view('clients.ReadClient');
+    return view('producte.clients.ReadClient');
 })->middleware(['auth', 'verified'])->name('VeureClients');
 
 Route::get('/EditarClientsForm/{id}', [ClientsController::class, 'edit'], function () {
-    return view('client.EditClient');
+    return view('producte.client.EditClient');
 })->middleware(['auth', 'verified'])->name('EditarClientsForm');
 
 // ---------------------------------- LLOGUERS
 
 Route::get('/AfegirLlogaForm', function () {
-    return view('Lloga.AddLloga');
+    return view('producte.Lloga.AddLloga');
 })->middleware(['auth', 'verified'])->name('AfegirLlogaForm');
 
 Route::get('/VeureLloga/{id}', [LlogaController::class, 'show'], function () {
-    return view('Lloga.ReadLloga');
+    return view('producte.Lloga.ReadLloga');
 })->middleware(['auth', 'verified'])->name('VeureLloga');
 
 Route::get('/EditarLlogaForm/{id}', [LlogaController::class, 'edit'], function () {
-    return view('Lloga.EditLloga');
+    return view('producte.Lloga.EditLloga');
 })->middleware(['auth', 'verified'])->name('EditarLlogaForm');
 
 // ----------------------------------- APARTAMENTS
 
 Route::get('/AfegirApartamentsForm', function () {
-    return view('apartaments.AddApartaments');
+    return view('producte.apartaments.AddApartaments');
 })->middleware(['auth', 'verified'])->name('AfegirApartamentsForm');
 
 Route::get('/VeureApartaments/{id}', [ApartamentController::class, 'show'], function () {
-    return view('apartaments.ReadApartament');
+    return view('producte.apartaments.ReadApartament');
 })->middleware(['auth', 'verified'])->name('VeureApartaments');
 
 Route::get('/EditarApartamentsForm/{id}', [ApartamentController::class, 'edit'], function () {
-    return view('apartaments.EditApartaments');
+    return view('producte.apartaments.EditApartaments');
 })->middleware(['auth', 'verified'])->name('EditarApartamentsForm');
 
 // -------------------------------------------------
