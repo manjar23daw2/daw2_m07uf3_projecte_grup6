@@ -1,4 +1,4 @@
-@if (Auth::check() && (Auth::user()->type == 'treballador'))
+@if (Auth::check() && ((Auth::user()->type == 'treballador') || (Auth::user()->type == 'cap de departament')))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </nav>
-                    <form action="{{ url('/AfegirApartaments') }}" method="post">
+                    <form action="{{ url('/AfegirApartaments', Auth::user()->type) }}" method="post">
                         <div>
                             @csrf
                             <div>

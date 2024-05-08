@@ -8,16 +8,16 @@
                 <h5>Codi: {{ $lloga->codi_unic }}</h5>
             </div>
             <div>
-                <h5>{{ $lloga->data_inici_lloguer }}</h5>
+                <h5>data_inici_lloguer: {{ $lloga->data_inici_lloguer }}</h5>
             </div>
             <div>
-                <h5>{{ $lloga->hora_inici_lloguer }}</h5>
+                <h5>hora_inici_lloguer: {{ $lloga->hora_inici_lloguer }}</h5>
             </div>
             <div>
-                <h5>{{ $lloga->data_final_lloguer }}</h5>
+                <h5>data_final_lloguer: {{ $lloga->data_final_lloguer }}</h5>
             </div>
             <div>
-                <h5>{{ $lloga->hora_final_lloguer }}</h5>
+                <h5>hora_final_lloguer: {{ $lloga->hora_final_lloguer }}</h5>
             </div>
             <div>
                 <h5>Lloc de lliurament de les claus: {{ $lloga->lloc_lliurament_claus }}</h5>

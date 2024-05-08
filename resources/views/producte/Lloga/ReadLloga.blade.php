@@ -1,4 +1,4 @@
-@if (Auth::check() && (Auth::user()->type == 'treballador'))
+@if (Auth::check() && ((Auth::user()->type == 'treballador') || (Auth::user()->type == 'cap de departament')))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -30,16 +30,16 @@
                                     <h5>Codi: {{ $lloga->codi_unic }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->data_inici_lloguer }}</h5>
+                                    <h5>data_inici_lloguer: {{ $lloga->data_inici_lloguer }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->hora_inici_lloguer }}</h5>
+                                    <h5>hora_inici_lloguer: {{ $lloga->hora_inici_lloguer }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->data_final_lloguer }}</h5>
+                                    <h5>data_final_lloguer: {{ $lloga->data_final_lloguer }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $lloga->hora_final_lloguer }}</h5>
+                                    <h5>hora_final_lloguer: {{ $lloga->hora_final_lloguer }}</h5>
                                 </div>
                                 <div>
                                     <h5>Lloc de lliurament de les claus: {{ $lloga->lloc_lliurament_claus }}</h5>

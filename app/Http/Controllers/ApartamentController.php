@@ -33,7 +33,7 @@ class ApartamentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $type)
     {
         $request['ascensor'] = "on" ? true : false;
         $request['aire_condicionat'] = "on" ? true : false;
@@ -57,9 +57,16 @@ class ApartamentController extends Controller
 
         Log::info('After redirect');
 
+
         Apartament::create($data);
-        return redirect()->route('gestioProducte')
-            ->with('success', 'User created successfully.');
+
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+                ->with('success', 'Lloguer created successfully.');
+        } else if ($type === "cap de departament") {
+            return redirect()->route('gestioEmpresa')
+                ->with('success', 'Lloguer created successfully.');
+        }
     }
 
     /**
@@ -91,11 +98,11 @@ class ApartamentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $codi)
+    public function update(Request $request, string $type, string $codi)
     {
         $request['ascensor'] = "on" ? true : false;
         $request['aire_condicionat'] = "on" ? true : false;
-        
+
         $request->validate([
             'codi_unic' => 'required|max:7',
             'referencia_catastral' => 'required|max:20',
@@ -114,18 +121,30 @@ class ApartamentController extends Controller
         $data = $request->all();
         $apt = Apartament::find($codi);
         $apt->update($data);
-        return redirect()->route('gestioProducte')
-            ->with('success', 'User created successfully.');
+
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+                ->with('success', 'Lloguer created successfully.');
+        } else if ($type === "cap de departament") {
+            return redirect()->route('gestioEmpresa')
+                ->with('success', 'Lloguer created successfully.');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $type, string $id)
     {
         $apt = Apartament::find($id);
         $apt->delete();
-        return redirect()->route('gestioProducte')
-            ->with('success', 'User deleted successfully');
+
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+                ->with('success', 'Lloguer created successfully.');
+        } else if ($type === "cap de departament") {
+            return redirect()->route('gestioEmpresa')
+                ->with('success', 'Lloguer created successfully.');
+        }
     }
 }

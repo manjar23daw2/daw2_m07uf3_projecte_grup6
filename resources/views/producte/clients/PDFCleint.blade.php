@@ -7,13 +7,13 @@
             <h5>Nom: {{ $client->nom }}</h5>
         </div>
         <div>
-            <h5>Cognoms: {{ $client->cognoms }}</h5>
+            <h5>Cognoms: {{ $client->cognom }}</h5>
         </div>
         <div>
             <h5>Edat: {{ $client->edat }}</h5>
         </div>
         <div>
-            <h5>Adreça: {{ $client->Adreça }}</h5>
+            <h5>Adreça: {{ $client->adreça }}</h5>
         </div>
         <div>
             <h5>Ciutat: {{ $client->ciutat }}</h5>

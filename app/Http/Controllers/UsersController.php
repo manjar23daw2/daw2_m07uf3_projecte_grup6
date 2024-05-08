@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Apartament;
+use App\Models\Clients;
+use App\Models\Lloga;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
@@ -14,9 +17,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::where('type', "=", 'treballador')->get();
+        $users = User::all();
+        $apt = Apartament::all();
+        $clients = Clients::all();
+        $lloguers = Lloga::all();
         //$users = User::all();
-        return view('treballadors.indexTreballadors', compact('users'));
+        return view('treballadors.indexTreballadors', compact('users','apt', 'clients', 'lloguers'));
     }
 
     /**
@@ -55,12 +61,13 @@ class UsersController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'email' => 'required|max:255',
-            'password' => 'required|max:255'
+            'password' => 'required|max:255',
+            'type' => 'required|max:255'
         ]);
 
         $data = $request->all();
 
-        $data['type'] = "treballador";
+        //$data['type'] = "treballador";
         $data['created_at'] = date('Y-m-d H:i:s');
         //$data['updated_at'] = null;
 

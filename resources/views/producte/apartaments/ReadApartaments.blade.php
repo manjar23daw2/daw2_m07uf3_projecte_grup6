@@ -1,4 +1,4 @@
-@if (Auth::check() && (Auth::user()->type == 'treballador'))
+@if (Auth::check() && ((Auth::user()->type == 'treballador') || (Auth::user()->type == 'cap de departament')))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -24,40 +24,40 @@
                         <div class="flex justify-center">
                             <div class="flex flex-col justify-between">
                                 <div>
-                                    <h5>{{ $apt->codi_unic }}</h5>
+                                    <h5>codi_unic: {{ $apt->codi_unic }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $apt->referencia_catastral }}</h5>
+                                    <h5>referencia_catastral: {{ $apt->referencia_catastral }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $apt->ciutat }}</h5>
+                                    <h5>ciutat: {{ $apt->ciutat }}</h5>
                                 </div>
                                 <div>
-                                    <h5>{{ $apt->barri }}</h5>
+                                    <h5>barri: {{ $apt->barri }}</h5>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->nom_carrer }}</p>
+                                    <p>nom_carrer: {{ $apt->nom_carrer }}</p>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->numero_carrer}}</p>
+                                    <p>numero_carrer: {{ $apt->numero_carrer}}</p>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->pis}}</p>
+                                    <p>pis: {{ $apt->pis}}</p>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->llits}}</p>
+                                    <p>llits: {{ $apt->llits}}</p>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->habitacions}}</p>
+                                    <p>habitacions: {{ $apt->habitacions}}</p>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->ascensor}}</p>
+                                    <p>ascensor: {{ $apt->ascensor}}</p>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->calefacció}}</p>
+                                    <p>calefacció: {{ $apt->calefacció}}</p>
                                 </div>
                                 <div>
-                                    <p>{{ $apt->aire_condicionat}}</p>
+                                    <p>aire_condicionat: {{ $apt->aire_condicionat}}</p>
                                 </div>
                             </div>
                         </div>

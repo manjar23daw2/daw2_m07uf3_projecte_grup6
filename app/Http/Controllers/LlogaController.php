@@ -28,7 +28,7 @@ class LlogaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $type)
     {
         //
         $request['hora_inici_lloguer'] = '2000-01-01 ' . $request['hora_inici_lloguer'] . ':00';
@@ -39,8 +39,14 @@ class LlogaController extends Controller
         $data = $request->all();
 
         Lloga::create($data);
-        return redirect()->route('gestioProducte')
+
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
             ->with('success', 'Lloguer created successfully.');
+        }else if($type === "cap de departament"){
+            return redirect()->route('gestioEmpresa')
+            ->with('success', 'Lloguer created successfully.');
+        }
     }
 
     /**
@@ -79,7 +85,7 @@ class LlogaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $dni, string $codi_unic)
+    public function update(Request $request, string $type, string $dni, string $codi_unic)
     {
         //
         $request['hora_inici_lloguer'] = '2000-01-01 ' . $request['hora_inici_lloguer'] . ':00';
@@ -90,20 +96,32 @@ class LlogaController extends Controller
         $lloga = Lloga::where('dni', '=', $dni)
             ->where('codi_unic', '=', $codi_unic);
         $lloga->update($data);
-        return redirect()->route('gestioProducte')
-            ->with('success', 'Data created successfully.');
+
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+            ->with('success', 'Lloguer created successfully.');
+        }else if($type === "cap de departament"){
+            return redirect()->route('gestioEmpresa')
+            ->with('success', 'Lloguer created successfully.');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $dni, string $codi_unic)
+    public function destroy(string $type, string $dni, string $codi_unic)
     {
         //
         $lloga = Lloga::where('dni', '=', $dni)
             ->where('codi_unic', '=', $codi_unic);
         $lloga->delete();
-        return redirect()->route('gestioProducte')
-            ->with('success', 'User deleted successfully');
+        
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+            ->with('success', 'Lloguer created successfully.');
+        }else if($type === "cap de departament"){
+            return redirect()->route('gestioEmpresa')
+            ->with('success', 'Lloguer created successfully.');
+        }
     }
 }

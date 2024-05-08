@@ -46,6 +46,12 @@
                                 <input style="border-radius:30px;color:black" type="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Mínims: 8 caràcters, una majúscula, una minúscula, un número i un caràter especial" name="password" id="password" required>
                             </div>
                             <br>
+                            <label for="type">Tipus de assegurança: </label>
+                                <select style="border-radius:30px;color:black" name="type" id="type" required>
+                                    <option value="treballador">Treballador</option>
+                                    <option value="cap de departament">cap de departament</option>
+                                </select>
+                            <br>
                             <div class="flex justify-center">
                                 <input type="submit" value="submit">
                             </div>

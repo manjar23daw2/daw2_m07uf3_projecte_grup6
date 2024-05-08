@@ -42,17 +42,17 @@
                                     <p>{{ $client->email }}</p>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
-                                    <form action="{{ route('EliminarClients', ['id' => $client->dni]) }}" method="POST">
+                                    <form action="{{ route('EliminarClients', ['type' => Auth::user()->type, 'id' => $client->dni]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Clients</button>
                                     </form>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarClientsForm', ['id' => $client->dni]) }}">Modificar Clients</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarClientsForm', ['type' => Auth::user()->type, 'id' => $client->dni]) }}">Modificar Clients</a>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureClients', ['id' => $client->dni]) }}">Veure Clients</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureClients', ['type' => Auth::user()->type, 'id' => $client->dni]) }}">Veure Clients</a>
                                 </div>
                             </div>
                         </div>
@@ -84,17 +84,17 @@
                                     <p>{{ $a->barri }}</p>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
-                                    <form action="{{ route('EliminarApartaments', ['id' => $a->codi_unic]) }}" method="POST">
+                                    <form action="{{ route('EliminarApartaments', ['type' => Auth::user()->type, 'id' => $a->codi_unic]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Apartament</button>
                                     </form>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarApartamentsForm', ['id' => $a->codi_unic]) }}">Modificar Apartament</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarApartamentsForm', ['type' => Auth::user()->type, 'id' => $a->codi_unic]) }}">Modificar Apartament</a>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureApartaments', ['id' => $a->codi_unic]) }}">Veure Apartament</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureApartaments', ['type' => Auth::user()->type, 'id' => $a->codi_unic]) }}">Veure Apartament</a>
                                 </div>
                             </div>
                         </div>
@@ -126,17 +126,17 @@
                                     <p>{{ $l->barri }}</p>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#FF0000;">
-                                    <form action="{{ route('EliminarLloguers', ['dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}" method="POST">
+                                    <form action="{{ route('EliminarLloguers', ['type' => Auth::user()->type, 'dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="padding-top: 5px;color:#000000">Esborrar Lloguer</button>
                                     </form>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#EBFF00;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarLlogaForm', ['dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}">Modificar Lloguer</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('EditarLlogaForm', ['type' => Auth::user()->type, 'dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}">Modificar Lloguer</a>
                                 </div>
                                 <div style="height: 38px; width: 202px; display:flex; justify-content:center; border-radius:30px;background-color:#0066FF;">
-                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureLloga', ['dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}">Veure Lloguer</a>
+                                    <a style="padding-top: 5px;color:#000000" href="{{ route('VeureLloga', ['type' => Auth::user()->type, 'dni' => $l->dni, 'codi_unic' => $l->codi_unic]) }}">Veure Lloguer</a>
                                 </div>
                             </div>
                         </div>

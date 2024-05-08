@@ -1,4 +1,4 @@
-@if (Auth::check() && (Auth::user()->type == 'treballador'))
+@if (Auth::check() && ((Auth::user()->type == 'treballador') || (Auth::user()->type == 'cap de departament')))
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -30,13 +30,13 @@
                                     <h5>Nom: {{ $client->nom }}</h5>
                                 </div>
                                 <div>
-                                    <h5>Cognoms: {{ $client->cognoms }}</h5>
+                                    <h5>Cognoms: {{ $client->cognom }}</h5>
                                 </div>
                                 <div>
                                     <h5>Edat: {{ $client->edat }}</h5>
                                 </div>
                                 <div>
-                                    <h5>Adreça: {{ $client->Adreça }}</h5>
+                                    <h5>Adreça: {{ $client->adreça }}</h5>
                                 </div>
                                 <div>
                                     <h5>Ciutat: {{ $client->ciutat }}</h5>

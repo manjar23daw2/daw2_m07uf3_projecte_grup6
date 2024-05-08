@@ -32,7 +32,7 @@ class ClientsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $type)
     {
         //
         
@@ -55,8 +55,13 @@ class ClientsController extends Controller
         unset($data['created_at']);
 
         Clients::create($data);
-        return redirect()->route('gestioProducte')
-            ->with('success', 'Client created successfully.');
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+            ->with('success', 'Lloguer created successfully.');
+        }else if($type === "cap de departament"){
+            return redirect()->route('gestioEmpresa')
+            ->with('success', 'Lloguer created successfully.');
+        }
     }
 
     /**
@@ -83,7 +88,7 @@ class ClientsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $dni)
+    public function update(Request $request, string $type, string $dni)
     {
         //
         $request->validate([
@@ -106,20 +111,32 @@ class ClientsController extends Controller
 
         $client = Clients::findOrFail($dni);
         $client->update($data);
-        return redirect()->route('gestioProducte')
-            ->with('success', 'Client updated successfully.');
+        
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+            ->with('success', 'Lloguer created successfully.');
+        }else if($type === "cap de departament"){
+            return redirect()->route('gestioEmpresa')
+            ->with('success', 'Lloguer created successfully.');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $dni)
+    public function destroy(string $type, string $dni)
     {
         //
         $client = Clients::find($dni);
         $client->delete();
-        return redirect()->route('gestioProducte')
-            ->with('success', 'Client deleted successfully');
+
+        if ($type === "treballador") {
+            return redirect()->route('gestioProducte')
+            ->with('success', 'Lloguer created successfully.');
+        }else if($type === "cap de departament"){
+            return redirect()->route('gestioEmpresa')
+            ->with('success', 'Lloguer created successfully.');
+        }
     }
 
     public function pdfC(string $dni)
