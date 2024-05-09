@@ -110,7 +110,7 @@ Route::post('/AfegirLloguers/{type}', [LlogaController::class, 'store'])->middle
 
 //PUT
 
-Route::put('/EditarTreballadors/{type}/{id}', [UsersController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarTreballadors');
+Route::put('/EditarTreballadors/{id}', [UsersController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarTreballadors');
 
 Route::put('/EditarApartaments/{type}/{id}', [ApartamentController::class, 'update'])->middleware(['auth', 'verified'])->name('EditarApartaments');
 
@@ -120,7 +120,7 @@ Route::put('/EditarLloguers/{type}/{dni}/{codi_unic}', [LlogaController::class, 
 
 //DELETE
 
-Route::delete('/EliminarTreballadors/{type}/{id}', [UsersController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarTreballadors');
+Route::delete('/EliminarTreballadors/{id}', [UsersController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarTreballadors');
 
 Route::delete('/EliminarLloguers/{type}/{dni}/{codi_unic}', [LlogaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('EliminarLloguers');
 
